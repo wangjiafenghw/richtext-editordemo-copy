@@ -70,7 +70,7 @@
 
     <button class="get" id="get_html">导出HTML</button>
     <button class="get" id="get_text">导出TEXT</button>
-    <button class="get" id="copy" data-clipboard-target="#result-html">复制HTML到粘贴版</button>
+    <button class="get" id="copy" data-clipboard-target="#result-html">复制HTML到粘贴版</button><span id="ok" style="display:none; color: green">&nbsp&nbsp copied!</span>
     <div id="result"></div>
     <xmp id="result-html"></xmp>
 
@@ -97,6 +97,10 @@
             console.info('Text:', e.text);
             console.info('Trigger:', e.trigger);
             e.clearSelection();
+            document.getElementById('ok').style.display = 'inline';
+            setTimeout(function(){
+                document.getElementById('ok').style.display = 'none';
+            }, 1000)
         });
         clipboard.on('error', function (e) {
             console.error('Action:', e.action);
